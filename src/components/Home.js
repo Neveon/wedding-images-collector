@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const handleFile = e => {
@@ -20,6 +21,9 @@ function Home() {
   return (
     <div>
       <input type='file' onChange={handleFile} />
+      <br />
+      <br />
+      <Link to='/images'>See images</Link>
     </div>
   );
 }

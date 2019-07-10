@@ -8,7 +8,12 @@ function Home() {
       let image = e.target.files[x];
       let formData = new FormData();
       formData.append('image', image, image.name);
-      axios.post('/image', formData).catch(err => console.log(err));
+      axios
+        .post(
+          'https://us-central1-image-upload-9aebe.cloudfunctions.net/api/image',
+          formData
+        )
+        .catch(err => console.log(err));
     }
   };
 

@@ -6,7 +6,9 @@ function UploadedImages() {
 
   useEffect(() => {
     axios
-      .get('/images')
+      .get(
+        'https://us-central1-image-upload-9aebe.cloudfunctions.net/api/images'
+      )
       .then(res => {
         setList(res.data.imageUrl);
       })

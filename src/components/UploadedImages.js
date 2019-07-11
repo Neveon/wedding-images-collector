@@ -19,7 +19,7 @@ function UploadedImages() {
   console.log(list);
 
   return list.map((imageUrl, index) => {
-    return <img src={imageUrl} key={index} />;
+    return <img src={imageUrl} key={index} alt='weddingPhoto' />;
   });
 }
 

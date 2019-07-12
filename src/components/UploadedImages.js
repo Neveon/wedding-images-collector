@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
-function UploadedImages() {
+import 'materialize-css/dist/css/materialize.min.css';
+import M from 'materialize-css/dist/js/materialize.min.js';
+
+function UploadedImages(props) {
   const [list, setList] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [textInput, setTextInput] = useState('');
-  const [err, setErr] = useState(false);
 
   const onChange = e => {
     setTextInput(e.target.value);
@@ -16,10 +17,8 @@ function UploadedImages() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    setErr(false);
-    setLoading(true);
-
     if (textInput === 'Love') {
+      M.toast({ html: 'Loading Images...' });
       axios
         .get(
           'https://us-central1-image-upload-9aebe.cloudfunctions.net/api/images'
@@ -30,43 +29,42 @@ function UploadedImages() {
         .catch(err => console.log(err));
       //console.log(loading);
     } else {
-      setErr(true);
+      M.toast({ html: 'Wrong password, please try again' });
     }
-    setLoading(false);
   };
 
-  console.log(list);
-
   return list.length ? (
-    !loading ? (
-      <div style={{ textAlign: 'center' }}>
-        {list.map((imageUrl, index) => {
-          return (
-            <img src={imageUrl} key={index} alt={`weddingPhoto ${index}`} />
-          );
-        })}
-      </div>
-    ) : (
-      <p>Loading...</p>
-    )
+    <div style={{ textAlign: 'center' }}>
+      {list.map((imageUrl, index) => {
+        return <img src={imageUrl} key={index} alt={`weddingPhoto ${index}`} />;
+      })}
+    </div>
   ) : (
     <div>
       <p>Please Enter Password to View Images</p>
       <form onSubmit={handleSubmit}>
-        <Input type='text' onChange={onChange} value={textInput} />
+        <div className='input-field'>
+          <input
+            type='text'
+            id='password'
+            onChange={onChange}
+            value={textInput}
+          />
+          <label htmlFor='password'>Password</label>
+        </div>
         <br />
-        <br />
-        <Button
-          type='submit'
-          variant='contained'
-          color='primary'
-          disabled={loading}
-        >
+        <Button type='submit' variant='contained' color='primary'>
           Submit
         </Button>
       </form>
       <br />
-      {err ? <p style={{ color: 'red' }}>Wrong Password</p> : null}
+      <br />
+      <br />
+      <Link to='/'>
+        <Button color='secondary' variant='outlined'>
+          Back to Homepage
+        </Button>
+      </Link>
     </div>
   );
 }

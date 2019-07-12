@@ -13,6 +13,7 @@ class Home extends Component {
   state = {
     info: false
   };
+
   handleFile = e => {
     const totalFiles = e.target.files.length;
     for (let x = 0; x < totalFiles; x++) {
@@ -28,6 +29,12 @@ class Home extends Component {
           this.setState({
             info: true
           });
+          setTimeout(
+            function() {
+              this.setState({ info: false });
+            }.bind(this),
+            5000
+          );
         })
         .catch(err => console.log(err));
     }
@@ -65,7 +72,7 @@ class Home extends Component {
             <CloudUploadIcon />
           </Button>
           <br />
-          {info ? <p>UPLOAD SUCCESSFUL</p> : null}
+          {this.state.info ? <p>UPLOAD SUCCESSFUL</p> : null}
           <br />
           <br />
           <Link to='/images' style={{ textDecoration: 'none' }}>

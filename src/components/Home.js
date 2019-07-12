@@ -58,7 +58,7 @@ class Home extends Component {
           </Button>
           <br />
           <br />
-          <Link to='/images'>
+          <Link to='/images' style={{ textDecoration: 'none' }}>
             <Button variant='contained' color='secondary'>
               See images
             </Button>

@@ -17,9 +17,9 @@ function UploadedImages() {
     e.preventDefault();
 
     setErr(false);
+    setLoading(true);
 
     if (textInput === 'pass') {
-      setLoading(true);
       axios
         .get(
           'https://us-central1-image-upload-9aebe.cloudfunctions.net/api/images'
@@ -28,11 +28,11 @@ function UploadedImages() {
           setList(res.data.imageUrl);
         })
         .catch(err => console.log(err));
-      setLoading(false);
       //console.log(loading);
     } else {
       setErr(true);
     }
+    setLoading(false);
   };
 
   console.log(list);
@@ -52,7 +52,12 @@ function UploadedImages() {
         <Input type='text' onChange={onChange} value={textInput} />
         <br />
         <br />
-        <Button type='submit' variant='contained' color='primary'>
+        <Button
+          type='submit'
+          variant='contained'
+          color='primary'
+          disabled={loading}
+        >
           Submit
         </Button>
       </form>

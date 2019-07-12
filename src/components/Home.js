@@ -9,11 +9,10 @@ import weddingPhoto from '../images/weddingHomePhoto.jpg';
 import Button from '@material-ui/core/Button';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
-class Home extends Component {
-  state = {
-    info: false
-  };
+import 'materialize-css/dist/css/materialize.min.css';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
+class Home extends Component {
   handleFile = e => {
     const totalFiles = e.target.files.length;
     for (let x = 0; x < totalFiles; x++) {
@@ -26,17 +25,12 @@ class Home extends Component {
           formData
         )
         .then(() => {
-          this.setState({
-            info: true
-          });
-          setTimeout(
-            function() {
-              this.setState({ info: false });
-            }.bind(this),
-            5000
-          );
+          M.toast({ html: 'Upload Successful', classes: 'rounded' });
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err);
+          M.toast({ html: 'Error Uploading' });
+        });
     }
   };
 
@@ -71,8 +65,6 @@ class Home extends Component {
             Upload Images&nbsp;
             <CloudUploadIcon />
           </Button>
-          <br />
-          {this.state.info ? <p>UPLOAD SUCCESSFUL</p> : null}
           <br />
           <br />
           <Link to='/images' style={{ textDecoration: 'none' }}>

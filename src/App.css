@@ -10,6 +10,9 @@ body {
 .App p {
   font-family: Lora;
 }
+#toast-container {
+  bottom: auto !important;
+}
 .App img {
   display: block;
   max-width: 675px;

@@ -19,7 +19,7 @@ function UploadedImages() {
     setErr(false);
     setLoading(true);
 
-    if (textInput === 'pass') {
+    if (textInput === 'Love') {
       axios
         .get(
           'https://us-central1-image-upload-9aebe.cloudfunctions.net/api/images'

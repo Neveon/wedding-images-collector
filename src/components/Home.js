@@ -10,6 +10,9 @@ import Button from '@material-ui/core/Button';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 class Home extends Component {
+  state = {
+    info: false
+  };
   handleFile = e => {
     const totalFiles = e.target.files.length;
     for (let x = 0; x < totalFiles; x++) {
@@ -21,6 +24,11 @@ class Home extends Component {
           'https://us-central1-image-upload-9aebe.cloudfunctions.net/api/image',
           formData
         )
+        .then(() => {
+          this.setState({
+            info: true
+          });
+        })
         .catch(err => console.log(err));
     }
   };
@@ -56,6 +64,8 @@ class Home extends Component {
             Upload Images&nbsp;
             <CloudUploadIcon />
           </Button>
+          <br />
+          {info ? <p>UPLOAD SUCCESSFUL</p> : null}
           <br />
           <br />
           <Link to='/images' style={{ textDecoration: 'none' }}>

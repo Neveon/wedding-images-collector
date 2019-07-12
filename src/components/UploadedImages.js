@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
-import { flexbox } from '@material-ui/system';
 
 function UploadedImages() {
   const [list, setList] = useState([]);
@@ -40,14 +39,18 @@ function UploadedImages() {
 
   return list.length ? (
     !loading ? (
-      list.map((imageUrl, index) => {
-        return <img src={imageUrl} key={index} alt={`weddingPhoto ${index}`} />;
-      })
+      <div style={{ textAlign: 'center' }}>
+        {list.map((imageUrl, index) => {
+          return (
+            <img src={imageUrl} key={index} alt={`weddingPhoto ${index}`} />
+          );
+        })}
+      </div>
     ) : (
       <p>Loading...</p>
     )
   ) : (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <div>
       <p>Please Enter Password to View Images</p>
       <form onSubmit={handleSubmit}>
         <Input type='text' onChange={onChange} value={textInput} />

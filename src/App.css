@@ -1,4 +1,37 @@
+html,
+body {
+  background: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fd2v9y0dukr6mq2.cloudfront.net%2Fvideo%2Fthumbnail%2FGTYSdDW%2Fblue-flowers-abstract-wedding-background-02_btkoubuq__F0000.png&f=1')
+    no-repeat;
+}
 .App {
   text-align: center;
   margin: auto;
+}
+.App p {
+  font-family: Lora;
+}
+.App img {
+  display: block;
+  max-width: 675px;
+  max-height: 450px;
+  margin: auto;
+}
+#weddingPhotoHome {
+  display: block;
+  max-width: 675px;
+  max-height: 450px;
+  margin: 0 auto 20px auto;
+}
+.title {
+  font-family: Raleway;
+  font-weight: 400;
+}
+.homeContainer {
+  z-index: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 16px;
+  }
 }

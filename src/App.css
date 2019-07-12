@@ -14,7 +14,7 @@ body {
   display: block;
   max-width: 675px;
   max-height: 450px;
-  margin: auto;
+  margin: 0 auto;
 }
 #weddingPhotoHome {
   display: block;
@@ -33,5 +33,11 @@ body {
 @media only screen and (max-width: 600px) {
   .title {
     font-size: 16px;
+  }
+  .App img {
+    display: block;
+    max-width: 450px;
+    max-height: 300px;
+    margin: 0 auto;
   }
 }

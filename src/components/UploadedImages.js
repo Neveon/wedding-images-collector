@@ -20,9 +20,7 @@ function UploadedImages(props) {
     if (textInput === 'Love') {
       M.toast({ html: 'Loading Images...' });
       axios
-        .get(
-          'https://us-central1-image-upload-9aebe.cloudfunctions.net/api/images'
-        )
+        .get('YOUR_FIREBASE_URL.net/api/images')
         .then(res => {
           setList(res.data.imageUrl);
         })

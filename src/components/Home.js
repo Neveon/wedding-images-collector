@@ -20,10 +20,7 @@ class Home extends Component {
       let formData = new FormData();
       formData.append('image', image, image.name);
       axios
-        .post(
-          'https://us-central1-image-upload-9aebe.cloudfunctions.net/api/image',
-          formData
-        )
+        .post('YOUR_FIREBASE_URL/api/image', formData)
         .then(() => {
           M.toast({ html: 'Upload Successful', classes: 'rounded' });
         })

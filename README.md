@@ -2,6 +2,9 @@
 
 This React App was used to collect wedding images from guests. All images were stored in Firebase Storage and accessed using Firebase datastore
 
+## What I Learned
+1. In production, learned about the storage bandwith consumption users take up on Firebase. Must upgrade plan beforehand, for example using the blaze plan
+
 ## Available Scripts
 
 In the project directory, you can run:
